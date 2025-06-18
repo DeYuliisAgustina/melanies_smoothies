@@ -47,6 +47,7 @@ if ingredients_list:
     import requests
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
     st.text(smoothiefroot_response)
+    
     #Si todo se ve bien, podés comentar st.stop() y descomentar la inserción:
     time_to_insert = st.button('Submit Order')
     if time_to_insert:

@@ -44,9 +44,14 @@ if ingredients_list:
     # Mostrar el SQL generado para depuración
     #st.write(my_insert_stmt)
     #st.stop()  # 
+    # New section to display smoothiefroot nutrition information
     import requests
+    
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-    st.text(smoothiefroot_response.json())
+    # st.text(smoothiefroot_response.json())
+    
+    sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
     
     #Si todo se ve bien, podés comentar st.stop() y descomentar la inserción:
     time_to_insert = st.button('Submit Order')

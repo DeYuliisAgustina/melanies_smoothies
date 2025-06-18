@@ -1,5 +1,6 @@
 #import python packages
 import streamlit as st
+import request
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -34,6 +35,9 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
 
     # st.write(ingredients_string)
 
@@ -44,13 +48,9 @@ if ingredients_list:
     # Mostrar el SQL generado para depuración
     #st.write(my_insert_stmt)
     #st.stop()  # 
-    # New section to display smoothiefroot nutrition information
-    import requests
-    
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+    # New section to display smoothiefroot nutrition information    
     # st.text(smoothiefroot_response.json())
     
-    sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
     
     #Si todo se ve bien, podés comentar st.stop() y descomentar la inserción:

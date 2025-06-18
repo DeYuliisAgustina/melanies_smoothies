@@ -1,6 +1,5 @@
 #import python packages
 import streamlit as st
-import request
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -47,6 +46,7 @@ if ingredients_list:
     #st.write(my_insert_stmt)
     #st.stop()  # 
     # New section to display smoothiefroot nutrition information
+    import request
     smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
     # st.text(smoothiefroot_response.json())
     sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
